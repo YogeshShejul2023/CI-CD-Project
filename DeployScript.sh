@@ -1,17 +1,6 @@
 #!/bin/bash
-
-# Set variables
-CODE_DIR="/home/ubuntu/Yogesh"
-NGINX_RESTART_CMD="sudo systemctl restart nginx"  # Adjust for your system
-
-# Navigate to the code directory
-cd $CODE_DIR || exit
-
-# Pull the latest code from the repository
-git pull origin master
-
-# Restart Nginx
-$NGINX_RESTART_CMD
-
-# Log the deployment details (optional)
-echo "Deployment completed on $(date)" >> /path/to/deployment.log
+sudo rm -rf /var/www/html
+GITHUB_REPO_URL="git remote add origin https://github.com/YogeshShejul2023/CI-CD-Project.git"
+DEPLOY_DIR="/var/www/html"
+git clone $GITHUB_REPO_URL $DEPLOY_DIR
+sudo systemctl restart nginx
